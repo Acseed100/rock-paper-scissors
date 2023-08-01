@@ -40,6 +40,6 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-const playerSelection = "rock";
+const playerSelection = prompt("What's your choice?").toLowerCase();
 const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
