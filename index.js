@@ -1,4 +1,5 @@
 function playRound(playerSelection, computerSelection) {
+
   console.log("Player's choice is: " + playerSelection + "\nComputer's choice is: " + computerSelection);
 
   switch (playerSelection + "-" + computerSelection) {
@@ -40,6 +41,26 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-const playerSelection = prompt("What's your choice?").toLowerCase();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+let playerSelection = prompt("What's your choice?").toLowerCase();;
+let computerSelection = getComputerChoice();
+
+function game() {
+  console.log(playRound(playerSelection, computerSelection));
+
+  playerSelection = prompt("What's your choice?").toLowerCase();
+  computerSelection = getComputerChoice();
+  console.log(playRound(playerSelection, computerSelection));
+
+  playerSelection = prompt("What's your choice?").toLowerCase();
+  computerSelection = getComputerChoice();
+  console.log(playRound(playerSelection, computerSelection));
+
+  playerSelection = prompt("What's your choice?").toLowerCase();
+  computerSelection = getComputerChoice();
+  console.log(playRound(playerSelection, computerSelection));
+
+  playerSelection = prompt("What's your choice?").toLowerCase();
+  computerSelection = getComputerChoice();
+  console.log(playRound(playerSelection, computerSelection));
+}
+game();
