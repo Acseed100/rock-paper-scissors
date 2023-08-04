@@ -1,4 +1,6 @@
+let computerSelection;
 function playRound(playerSelection, computerSelection) {
+  computerSelection = getComputerChoice();
 
   console.log("Player's choice is: " + playerSelection + "\nComputer's choice is: " + computerSelection);
 
@@ -41,26 +43,16 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-let playerSelection = prompt("What's your choice?").toLowerCase();;
-let computerSelection = getComputerChoice();
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
 
-function game() {
-  console.log(playRound(playerSelection, computerSelection));
-
-  playerSelection = prompt("What's your choice?").toLowerCase();
-  computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-
-  playerSelection = prompt("What's your choice?").toLowerCase();
-  computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-
-  playerSelection = prompt("What's your choice?").toLowerCase();
-  computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-
-  playerSelection = prompt("What's your choice?").toLowerCase();
-  computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-}
-game();
+rock.addEventListener("click", () => {
+  console.log(playRound("rock", computerSelection));
+})
+paper.addEventListener("click", () => {
+  console.log(playRound("paper", computerSelection));
+})
+scissors.addEventListener("click", () => {
+  console.log(playRound("scissors", computerSelection));
+})
