@@ -1,58 +1,90 @@
 let computerSelection;
-function playRound(playerSelection, computerSelection) {
-  computerSelection = getComputerChoice();
 
-  console.log("Player's choice is: " + playerSelection + "\nComputer's choice is: " + computerSelection);
+        let playerScore = 0;
+        let computerScore = 0;
 
-  switch (playerSelection + "-" + computerSelection) {
-    case 'rock-paper':
-      return "You lost :( Paper beats rock";
-      break;
+        function playRound(playerSelection, computerSelection) {
+            computerSelection = getComputerChoice();
 
-    case 'rock-scissors':
-      return "You won! Rock beats scissors";
-      break;
+            let result;
 
-    case 'paper-rock':
-      return "You won! Paper beats rock";
-      break;
+            console.log("Player's choice is: " + playerSelection + "\nComputer's choice is: " + computerSelection);
 
-    case 'paper-scissors':
-      return "You lost :( Scissors beat paper"
-      break;
+            switch (playerSelection + "-" + computerSelection) {
+                case 'rock-paper':
+                    result = "You lost :( Paper beats rock";
+                    computerScore++;
+                    break;
 
-    case 'scissors-rock':
-      return "You lost :( Rock beats scissors";
-      break;
+                case 'rock-scissors':
+                    result = "You won! Rock beats scissors";
+                    playerScore++;
+                    break;
 
-    case 'scissors-paper':
-      return "You won! Scissors beat paper"
-      break;
+                case 'paper-rock':
+                    result = "You won! Paper beats rock";
+                    playerScore++;
+                    break;
 
-    default:
-      return "Draw";
-      break;
-  }
+                case 'paper-scissors':
+                    result = "You lost :( Scissors beat paper";
+                    computerScore++;
+                    break;
 
-}
+                case 'scissors-rock':
+                    result = "You lost :( Rock beats scissors";
+                    computerScore++;
+                    break;
 
-let selections = ["rock", "paper", "scissors"];
+                case 'scissors-paper':
+                    result = "You won! Scissors beat paper";
+                    playerScore++;
+                    break;
 
-function getComputerChoice() {
-  let computerChoice = selections[Math.floor(Math.random() * 3)]; // getting a random number between 0 & 2
-  return computerChoice;
-}
+                default:
+                    result = "Draw";
+                    break;
+            }
 
-const rock = document.getElementById("rock");
-const paper = document.getElementById("paper");
-const scissors = document.getElementById("scissors");
+            // Display result and score on the webpage
+            document.getElementById('results').innerText = result;
+            document.getElementById('score').innerText = `Player: ${playerScore} | Computer: ${computerScore}`;
 
-rock.addEventListener("click", () => {
-  console.log(playRound("rock", computerSelection));
-})
-paper.addEventListener("click", () => {
-  console.log(playRound("paper", computerSelection));
-})
-scissors.addEventListener("click", () => {
-  console.log(playRound("scissors", computerSelection));
-})
+            // Announce winner if someone reaches 5 points
+            if (playerScore >= 5) {
+                document.getElementById('results').innerText = "Congratulations! You are the winner!";
+                // Disable buttons to end the game
+                rock.disabled = true;
+                paper.disabled = true;
+                scissors.disabled = true;
+            } else if (computerScore >= 5) {
+                document.getElementById('results').innerText = "Computer wins! Better luck next time.";
+                // Disable buttons to end the game
+                rock.disabled = true;
+                paper.disabled = true;
+                scissors.disabled = true;
+            }
+        }
+
+        let selections = ["rock", "paper", "scissors"];
+
+        function getComputerChoice() {
+            let computerChoice = selections[Math.floor(Math.random() * 3)];
+            return computerChoice;
+        }
+
+        const rock = document.getElementById("rock");
+        const paper = document.getElementById("paper");
+        const scissors = document.getElementById("scissors");
+
+        rock.addEventListener("click", () => {
+            playRound("rock", computerSelection);
+        });
+
+        paper.addEventListener("click", () => {
+            playRound("paper", computerSelection);
+        });
+
+        scissors.addEventListener("click", () => {
+            playRound("scissors", computerSelection);
+        });

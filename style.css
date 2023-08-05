@@ -1,0 +1,29 @@
+button{
+    width: 7rem;
+    height: 2rem;
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 20px;
+    border:2px solid gray;
+}
+#results{
+    color:red;
+    font-size: 25px;
+}
+
+#score{
+    color:blue;
+    font-size: 20px;
+}
+#rock{
+    background-color: rgb(22, 11, 145);
+    color:whitesmoke
+}
+#paper{
+    background-color: rgb(236, 229, 23);
+}
+#scissors{
+    background-color: rgb(198, 11, 11);
+    color: whitesmoke;
+}
